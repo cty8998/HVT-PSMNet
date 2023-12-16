@@ -45,4 +45,4 @@ If you find our work useful in your research, please consider citing our paper:
 
 # Acknowledgements
 
-This project is built upon [PSMNet](https://github.com/JiaRenChang/PSMNet), We thank the original authors for their excellent work.
+This project is built upon [PSMNet](https://github.com/JiaRenChang/PSMNet), we thank the original authors for their excellent work.
