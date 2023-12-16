@@ -79,7 +79,7 @@ class PSMNet(nn.Module):
 
         self.feature_discriminator = feature_discriminator()
         self.feature_discriminator_res18 = ResNet(BasicBlock_res, [2, 2, 2, 2], num_classes=4)
-        weight = torch.load("/home/tychang/github_sm_hvt/psmnet_gLR_res18_final/resnet18-5c106cde.pth")
+        weight = torch.load(self.args.res18)
         weight['fc.weight'] = self.feature_discriminator_res18.state_dict()['fc.weight']
         weight['fc.bias'] = self.feature_discriminator_res18.state_dict()['fc.bias']
         self.feature_discriminator_res18.load_state_dict(weight)
