@@ -51,6 +51,8 @@ parser.add_argument('--num_epoch', type=int, default=45,
                     help='the number of epoch')
 parser.add_argument('--logfile', type=str, default='/home/tychang/github_sm_hvt/psmnet_hvt/output/hvt_psmnet_bn.txt',
                     help='the domain generalization evaluation results on four realistic datasets')
+parser.add_argument('--res18', type=str, default='/home/tychang/github_sm_hvt/psmnet_gLR_res18_final/resnet18-5c106cde.pth',
+                    help='the pretrained model of resnet18')
 
 parser.add_argument('--mu', type=float, default=0.1,
                     help='the value of hyper-parameter μ (default: 0.1)')
