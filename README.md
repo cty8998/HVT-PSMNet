@@ -31,7 +31,7 @@ You only need to change the corresponding paths of the testing datasets in main.
 [Google Drive](https://drive.google.com/drive/folders/1Wnf2wpppXrZPguwLTQgEhxgjBAfENGHN?usp=drive_link)
 
 #### Pretrained ResNet18 Model:
-[[Google Drive](https://drive.google.com/drive/folders/1Wnf2wpppXrZPguwLTQgEhxgjBAfENGHN?usp=drive_link](https://drive.google.com/file/d/138Sw0mWdAEzknWd2QH-rmMtGS4Pqb-Yh/view?usp=drive_link))
+[Google Drive](https://drive.google.com/drive/folders/1Wnf2wpppXrZPguwLTQgEhxgjBAfENGHN?usp=drive_link](https://drive.google.com/file/d/138Sw0mWdAEzknWd2QH-rmMtGS4Pqb-Yh/view?usp=drive_link))
 
 ## Citation
 
