@@ -1,4 +1,4 @@
-### Domain Generalized Stereo Matching via Hierarchical Visual Transformation
+### Domain Generalized Stereo Matching via Hierarchical Visual Transformation (CVPR 2023)
 
 <img src="figures/figure.png" width="80%" height="60%">
 
