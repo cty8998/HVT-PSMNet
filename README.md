@@ -24,7 +24,8 @@ python main.py --data_path (your SceneFlow data folder) --savemodel (the path of
 
 #### Evaluation:
 In the training stage, our code will automatically test the performance of four realistic datasets (Middlebury, ETH3D, KITTI2015, KITTI2012) after each epoch.
-You only need to change the corresponding path of testing dataset in main.py
+
+You only need to change the corresponding paths of the testing datasets in main.py.
 
 #### Pretrained Models:
 [Google Drive](https://drive.google.com/drive/folders/1Wnf2wpppXrZPguwLTQgEhxgjBAfENGHN?usp=drive_link)
