@@ -19,7 +19,7 @@
 
 #### Training:
 ```bash
-python main.py --data_path (your SceneFlow data folder) --savemodel (the path of the saved models) --logfile (the path of the log file)
+python main.py --data_path (your SceneFlow data folder) --savemodel (the path of the saved models) --logfile (the path of the log file) --res18 (the path of the Pretrained ResNet18 Model)
 ```
 
 #### Evaluation:
@@ -29,6 +29,9 @@ You only need to change the corresponding paths of the testing datasets in main.
 
 #### Pretrained Models:
 [Google Drive](https://drive.google.com/drive/folders/1Wnf2wpppXrZPguwLTQgEhxgjBAfENGHN?usp=drive_link)
+
+#### Pretrained ResNet18 Model:
+[[Google Drive](https://drive.google.com/drive/folders/1Wnf2wpppXrZPguwLTQgEhxgjBAfENGHN?usp=drive_link](https://drive.google.com/file/d/138Sw0mWdAEzknWd2QH-rmMtGS4Pqb-Yh/view?usp=drive_link))
 
 ## Citation
 
