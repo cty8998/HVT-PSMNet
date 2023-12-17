@@ -36,7 +36,7 @@ python submission.py --loadmodel (your testing model) --test_name (the name of t
 [Google Drive](https://drive.google.com/drive/folders/1Wnf2wpppXrZPguwLTQgEhxgjBAfENGHN?usp=drive_link)
 
 #### Pretrained ResNet18 Model:
-[Google Drive](https://drive.google.com/file/d/138Sw0mWdAEzknWd2QH-rmMtGS4Pqb-Yh/view?usp=drive_link))
+[Google Drive](https://drive.google.com/drive/folders/14puLJ5ccffh8Bc1P2hhPoK73gSC1TImf?usp=sharing)
 
 ## Citation
 
