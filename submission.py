@@ -33,6 +33,8 @@ parser.add_argument('--no-cuda', action='store_true', default=False,
                     help='enables CUDA training')
 parser.add_argument('--seed', type=int, default=1, metavar='S',
                     help='random seed (default: 1)')
+parser.add_argument('--logfile', type=str, default='/home/tychang/github_sm_hvt/psmnet_hvt/output/hvt_psmnet_bn.txt',
+                    help='the domain generalization evaluation results on four realistic datasets')
 args = parser.parse_args()
 
 
