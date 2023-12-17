@@ -20,10 +20,10 @@ from dataloader import readpfm as rp
 
 parser = argparse.ArgumentParser(description='PSMNet')
 parser.add_argument('--test_name', default='kitti12',
-                    help='KITTI version')
+                    help='KITTI 2012: kitti12; KITTI 2015: kitti15; Middlebury: md; ETH3D: eth')
 parser.add_argument('--datapath', default='/media/jiaren/ImageNet/data_scene_flow_2015/testing/',
                     help='select model')
-parser.add_argument('--loadmodel', default='/data/cty/stereo_matching_generalization/PSMNet/checkpoint_9.tar',
+parser.add_argument('--loadmodel', default=None,
                     help='loading model')
 parser.add_argument('--model', default='stackhourglass',
                     help='select model')
@@ -34,51 +34,7 @@ parser.add_argument('--no-cuda', action='store_true', default=False,
 parser.add_argument('--seed', type=int, default=1, metavar='S',
                     help='random seed (default: 1)')
 args = parser.parse_args()
-# os.environ['CUDA_DEVICE_ORDER'] = "PCI_BUS_ID"
-# os.environ['CUDA_VISIBLE_DEVICES'] = '9'
-# args.cuda = not args.no_cuda and torch.cuda.is_available()
 
-# torch.manual_seed(args.seed)
-# if args.cuda:
-#     torch.cuda.manual_seed(args.seed)
-
-# if args.test_name=='md':
-#     train_limg, train_rimg, train_gt, test_limg, test_rimg = mb.mb_loader("/data/cty/raft/RAFT-Stereo/datasets/Middlebury/MiddEval3", res='H')
-#     test_left_img, test_right_img = train_limg, train_rimg
-
-# if args.test_name=='eth':
-#     all_limg, all_rimg, all_disp, all_mask = et.et_loader("/data/cty/raft/RAFT-Stereo/datasets/ETH3D")
-#     test_left_img, test_right_img = all_limg, all_rimg
-
-# if args.test_name=='kitti15':
-#     all_limg, all_rimg, all_ldisp, test_limg, test_rimg, test_ldisp = kt.kt_loader("/data/Dataset/KITTI_stereo/kitti_2015/data_scene_flow/training/")
-#     test_left_img, test_right_img = all_limg + test_limg, all_rimg + test_rimg
-#     test_limg = all_limg + test_limg
-#     test_rimg = all_rimg + test_rimg
-#     test_ldisp = all_ldisp + test_ldisp
-
-# if args.test_name=='kitti12':
-#     all_limg, all_rimg, all_ldisp, test_limg, test_rimg, test_ldisp = kt2012.kt2012_loader("/data/Dataset/KITTI_stereo/kitti_2012/data_stereo_flow/training/")
-#     test_left_img, test_right_img = all_limg + test_limg, all_rimg + test_rimg
-#     test_limg = all_limg + test_limg
-#     test_rimg = all_rimg + test_rimg
-#     test_ldisp = all_ldisp + test_ldisp
-
-# if args.model == 'stackhourglass':
-#     model = stackhourglass(args.maxdisp)
-# elif args.model == 'basic':
-#     model = basic(args.maxdisp)
-# else:
-#     print('no model')
-
-# model = nn.DataParallel(model)
-# model.cuda()
-
-# if args.loadmodel is not None:
-#     state_dict = torch.load(args.loadmodel)
-#     model.load_state_dict(state_dict['state_dict'])
-
-# print('Number of model parameters: {}'.format(sum([p.data.nelement() for p in model.parameters()])))
 
 def test(model,imgL,imgR):
     model.eval()
@@ -236,10 +192,32 @@ def dg_test(model, log_file, test_left_img, test_right_img, test_ldisp=None, tes
             print('epe:{}'.format(pred_mae / len(test_left_img)), file=f)
 
 
-# if __name__ == '__main__':
-#     dg_test()
 
+if __name__ == '__main__':
+    train_limg_mb, train_rimg_mb, train_gt_mb, test_limg_mb, test_rimg_mb = mb.mb_loader("/home/tychang/test_data//MiddEval3", res='H')
+    test_left_img_mb, test_right_img_mb = train_limg_mb, train_rimg_mb
 
+    all_limg_eth, all_rimg_eth, all_disp_eth, all_mask_eth = et.et_loader("/home/tychang/test_data//ETH3D")
+    test_left_img_eth, test_right_img_eth = all_limg_eth, all_rimg_eth
+
+    all_limg, all_rimg, all_ldisp, test_limg, test_rimg, test_ldisp = kt.kt_loader("/home/tychang/test_data//KITTI_stereo/kitti_2015/data_scene_flow/training/")
+    test_left_img_k12, test_right_img_k12 = all_limg + test_limg, all_rimg + test_rimg
+    test_ldisp_k12 = all_ldisp + test_ldisp
+    
+    all_limg, all_rimg, all_ldisp, test_limg, test_rimg, test_ldisp = kt2012.kt2012_loader("/home/tychang/test_data//KITTI_stereo/kitti_2012/data_stereo_flow/training/")
+    test_left_img_k15, test_right_img_k15 = all_limg + test_limg, all_rimg + test_rimg
+    test_ldisp_k15 = all_ldisp + test_ldisp
+
+    model_test = stackhourglass_test(args.maxdisp)
+    model_test = nn.DataParallel(model_test)
+    model_test.cuda()
+    state_dict = torch.load(args.loadmodel)
+    model_test.load_state_dict(state_dict['state_dict'], strict=False)
+    
+    dg_test(model_test, args.logfile, test_left_img_mb, test_right_img_mb, train_gt_mb, test_name=args.test_name)
+    # dg_test(model_test, args.logfile, test_left_img_eth, test_right_img_eth, all_disp_eth, test_name='eth', all_mask=all_mask_eth)
+    # dg_test(model_test, args.logfile, test_left_img_k12, test_right_img_k12, test_ldisp_k12, test_name='kitti15')
+    # dg_test(model_test, args.logfile, test_left_img_k15, test_right_img_k15, test_ldisp_k15, test_name='kitti12')
 
 
 
