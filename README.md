@@ -29,7 +29,7 @@ You only need to change the corresponding paths of the testing datasets in main.
 
 If you want to evaluate the specific model on a certain realistic dataset:
 ```bash
-python submission.py --loadmodel (your testing model) --logfile (the path of the log file) 
+python submission.py --loadmodel (your testing model) --test_name (the name of testing dataset) --logfile (the path of the log file) 
 ```
 
 #### Pretrained Models:
