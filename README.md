@@ -6,9 +6,9 @@
 - Python 3.9
 - PyTorch 1.13.0
 - torchvision 0.14.0
-- matplotlib 3.7.2
-- opencv-python 4.8.0.76
-- pillow 9.0.1
+- matplotlib 
+- opencv-python 
+- pillow 
 
 #### Datasets:
 - [SceneFlow](https://lmb.informatik.uni-freiburg.de/resources/datasets/SceneFlowDatasets.en.html)
@@ -27,11 +27,16 @@ In the training stage, our code will automatically test the performance of four 
 
 You only need to change the corresponding paths of the testing datasets in main.py.
 
+If you want to evaluate the specific model on a certain realistic dataset:
+```bash
+python submission.py --loadmodel (your testing model) --logfile (the path of the log file) 
+```
+
 #### Pretrained Models:
 [Google Drive](https://drive.google.com/drive/folders/1Wnf2wpppXrZPguwLTQgEhxgjBAfENGHN?usp=drive_link)
 
 #### Pretrained ResNet18 Model:
-[Google Drive](https://drive.google.com/drive/folders/1Wnf2wpppXrZPguwLTQgEhxgjBAfENGHN?usp=drive_link](https://drive.google.com/file/d/138Sw0mWdAEzknWd2QH-rmMtGS4Pqb-Yh/view?usp=drive_link))
+[Google Drive](https://drive.google.com/file/d/138Sw0mWdAEzknWd2QH-rmMtGS4Pqb-Yh/view?usp=drive_link))
 
 ## Citation
 
